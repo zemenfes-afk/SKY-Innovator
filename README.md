@@ -3,7 +3,7 @@
 This project builds a deep learning segmentation model using PyTorch to detect forest and deforestation areas.
 The model is first trained using satellite images and masks, then adapted to drone images.
 
----
+
 
 # Part 1: Training with Satellite Images
 
@@ -11,7 +11,7 @@ This project demonstrates how to build a **semantic segmentation model** that de
 
 The pipeline starts with **raw satellite `.tif` images and mask labels**, converts them to a clean dataset, and trains a segmentation model using **PyTorch** and **Segmentation Models PyTorch** inside **Google Colab**.
 
----
+
 
 # 🛰️ Project Pipeline
 
@@ -37,7 +37,7 @@ Architecture used:
 * Encoder: **EfficientNet-B2**
 * Framework: **PyTorch**
 
----
+
 
 # 🚀 Run in Google Colab
 
@@ -57,7 +57,7 @@ Runtime → Change runtime type → GPU
 
 3️⃣ Run the notebook cells sequentially.
 
----
+
 
 # 📦 STEP 1 — Download Raw Data & Install Converter Tools
 
@@ -81,7 +81,7 @@ Clean_Amazon_Dataset/
    masks/
 ```
 
----
+
 
 # 🔄 STEP 2 — Convert TIF Satellite Images to JPG
 
@@ -116,7 +116,7 @@ Clean_Amazon_Dataset/
        image_002.png
 ```
 
----
+
 
 # 📊 Dataset Verification
 
@@ -137,7 +137,7 @@ SUCCESS: matching pairs
 
 This ensures every image has a corresponding mask.
 
----
+
 
 # 📂 STEP 3 — Dataset Loader
 
@@ -173,7 +173,7 @@ Mask   → Forest segmentation mask
 
 This step verifies that **data and labels align correctly**.
 
----
+
 
 # 🧠 STEP 4 — Install Segmentation Model Library
 
@@ -189,7 +189,7 @@ This library provides ready-to-use architectures like:
 * **DeepLabV3**
 * **FPN**
 
----
+
 
 # ⚙️ STEP 5 — Model Training
 
@@ -243,7 +243,7 @@ Epoch 26 | Loss: 0.35 | IoU: 0.93
 
 Best performing model is saved automatically.
 
----
+
 
 # 🧪 STEP 6 — Visualizing Model Output
 
@@ -261,7 +261,7 @@ Highlighted Forest Regions
 
 This helps visualize **deforestation detection or forest coverage**.
 
----
+
 
 # 📈 Training Results
 
@@ -273,7 +273,7 @@ Best IoU: 0.9281
 
 Meaning the predicted forest masks overlap **~93% with ground truth masks**.
 
----
+
 
 # 📂 Project Structure
 
@@ -291,14 +291,14 @@ amazon-forest-segmentation
 └── README.md
 ```
 
----
+
 
 # 🚁 Part 2: Drone Image Processing and Mask Generation
 
 The final goal of this project is to **detect forest areas from drone imagery**.
 Since drone images initially do not contain masks, we use the **trained satellite segmentation model to automatically generate masks**.
 
----
+
 
 # STEP 1 — Check Drone Image Size
 
@@ -318,7 +318,7 @@ Example:
 Drone Image Shape: (height, width, 3)
 ```
 
----
+
 
 # STEP 2 — Generate Initial Drone Masks (M1–M4)
 
@@ -343,7 +343,7 @@ M4.png
 
 These masks help verify whether the model can **generalize from satellite imagery to drone imagery**.
 
----
+
 
 # STEP 3 — Generate Masks for the Full Drone Dataset
 
@@ -365,7 +365,7 @@ Drone_Dataset/
    masks/
 ```
 
----
+
 
 # STEP 4 — Auto-Generate Masks Using the Satellite Model
 
@@ -383,7 +383,7 @@ Predicted Forest Mask
 
 This step converts the drone dataset into a **fully labeled segmentation dataset**.
 
----
+
 
 # STEP 5 — Model Testing on Drone Images
 
