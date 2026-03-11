@@ -1,4 +1,11 @@
-# 🌳 Amazon Forest Segmentation from Satellite Images
+# 🌳 Forest Segmentation Project (Satellite → Drone Images)
+
+This project builds a deep learning segmentation model using PyTorch to detect forest and deforestation areas.
+The model is first trained using satellite images and masks, then adapted to drone images.
+
+---
+
+# Part 1: Training with Satellite Images
 
 This project demonstrates how to build a **semantic segmentation model** that detects **Amazon rainforest regions** from satellite imagery.
 
@@ -282,3 +289,117 @@ amazon-forest-segmentation
 ├── final_amazon_model.pth
 │
 └── README.md
+```
+
+---
+
+# 🚁 Part 2: Drone Image Processing and Mask Generation
+
+The final goal of this project is to **detect forest areas from drone imagery**.
+Since drone images initially do not contain masks, we use the **trained satellite segmentation model to automatically generate masks**.
+
+---
+
+# STEP 1 — Check Drone Image Size
+
+Before processing drone images, their dimensions are verified.
+
+This step helps ensure that the drone images are compatible with the trained model.
+
+Typical checks include:
+
+* Image resolution
+* Channel format (RGB)
+* Image resizing if required
+
+Example:
+
+```
+Drone Image Shape: (height, width, 3)
+```
+
+---
+
+# STEP 2 — Generate Initial Drone Masks (M1–M4)
+
+To test the approach, a small set of **sample drone images** is used.
+
+The trained satellite model generates **predicted masks** for these images.
+
+Example:
+
+```
+Drone Image → Model Prediction → Generated Mask
+```
+
+Sample outputs:
+
+```
+M1.png
+M2.png
+M3.png
+M4.png
+```
+
+These masks help verify whether the model can **generalize from satellite imagery to drone imagery**.
+
+---
+
+# STEP 3 — Generate Masks for the Full Drone Dataset
+
+After validating the masking process, the model is applied to the **entire drone dataset**.
+
+In this project:
+
+```
+Total Drone Images: 392
+```
+
+The trained model automatically generates segmentation masks for each drone image.
+
+Output dataset:
+
+```
+Drone_Dataset/
+   images/
+   masks/
+```
+
+---
+
+# STEP 4 — Auto-Generate Masks Using the Satellite Model
+
+The satellite-trained model is used as an **automatic mask generator**.
+
+Pipeline:
+
+```
+Drone Image
+     ↓
+Satellite-trained U-Net Model
+     ↓
+Predicted Forest Mask
+```
+
+This step converts the drone dataset into a **fully labeled segmentation dataset**.
+
+---
+
+# STEP 5 — Model Testing on Drone Images
+
+Finally, the model predictions are visualized on drone images.
+
+Output visualization:
+
+```
+Drone Image
+     ↓
+Predicted Mask
+     ↓
+Forest Regions Highlighted
+```
+
+This demonstrates the model’s ability to **detect vegetation and forest areas from aerial drone imagery**.
+
+
+These make the README look **much stronger for portfolios or research**.
