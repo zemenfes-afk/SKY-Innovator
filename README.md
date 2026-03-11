@@ -400,6 +400,4 @@ Forest Regions Highlighted
 ```
 
 This demonstrates the model’s ability to **detect vegetation and forest areas from aerial drone imagery**.
-
-
-These make the README look **much stronger for portfolios or research**.
+                  #END#
